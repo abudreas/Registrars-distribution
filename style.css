@@ -1,0 +1,135 @@
+form , div {
+  /* Center the form on the page */
+ 
+  margin: 30px 0px 0px 0px;
+  width: auto;
+  /* Form line */
+  padding: 1em;
+  border: 1px solid rgb(18, 21, 187);
+  border-radius: 1em;
+  background-color: rgb(186, 207, 212);
+}
+body {
+  
+background-color: bisque;
+border: 1px solid #000;
+width: 300;
+margin: 0 auto;
+}
+header {
+/* Center the form on the page */
+margin: 0px 0px 15px 0px;
+width: auto;
+/* Form outline */
+padding: 1em;
+border: 1px solid rgb(18, 21, 187);
+border-radius: 1em;
+background-color: rgb(186, 207, 212);
+font-family: Arial;
+font-size: x-large;
+font-weight:  900;
+text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+form li + li {
+  margin-top: 1em;
+}
+
+label {
+  /* Uniform size & alignment */
+  display: inline-block;
+  width: 200px;
+  text-align: right;
+}
+
+input{
+  /* To make sure that all text fields have the same font settings
+     By default, textareas have a monospace font */
+  font: 1em sans-serif;
+
+  /* Uniform text field size */
+  width: 200px;
+  box-sizing: border-box;
+
+  /* Match form field borders */
+  border: 1px solid #999;
+  border-radius: 0.5em;
+}
+
+input:focus {
+  /* Additional highlight for focused elements */
+  border-color: #000;
+}
+
+.button {
+  /* Align buttons with the text fields */
+  padding-right: 200px; /* same size as the label elements */
+  padding-top: 50px;
+}
+
+button {
+  /* This extra margin represent roughly the same space as the space
+     between the labels and their text fields */
+  margin-left: .5em;
+  border-radius: 0.5em;
+  box-shadow: 2px 4px 4px black;
+  cursor: pointer;
+}
+select {
+  border-radius: 0.5em;
+  width: 200px;
+}
+select:focus{
+  border-color: #000;
+}
+fieldset {
+  border-radius: 0.5em;
+box-shadow:2px 4px 4px black;
+}
+small {
+  color: crimson;
+}
+legend{
+  font-weight: bold;
+  text-shadow: 2px 2px 4px black;
+}
+table,
+td {
+  width: inherit;
+    border: 1px solid rgb(18, 21, 187);
+    border-bottom: 1px;
+}
+
+thead,
+tfoot {
+  width: inherit;
+    background-color: rgb(87, 135, 233);
+    color: black;
+    border-bottom: 1px;
+}
+footer {
+  margin: 30px 0px 7px;
+  text-align: center;
+  align-content: center;
+  border: 1px solid rgb(18, 21, 187);
+  border-radius: 1em;
+  background-color: rgb(186, 207, 212);
+  padding: 30px;
+}
+strong {
+  color: red;
+}
+.popup {
+  display: none;
+  
+  margin-left: -142px;
+  left: 50%;
+  top: 10px;
+  width: 300px;
+  }
