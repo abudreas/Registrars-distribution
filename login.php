@@ -14,6 +14,13 @@ function fetchadmin($pdo, $tele, $password)
     }
 }
 $message = '<p>الرجاء إدخال رقم الهاتف و كلمة السر</p>';
+if (isset($_GET['action']) && $_GET['action']=='logout'){
+    $_SESSION = [];
+    if (session_status()==PHP_SESSION_ACTIVE)session_destroy();
+    $output = 'تم تسجيل الخروج';
+    include __DIR__ . '/templates/adminlayout.html.php';
+    exit;
+}
 
 if (! isset($_POST['tele']) || ! isset($_POST['password'])) {
     $message = '<p>الرجاء إدخال رقم الهاتف و كلمة السر</p>';
@@ -28,7 +35,15 @@ if (! isset($_POST['tele']) || ! isset($_POST['password'])) {
         $sttable = new statetable($pdo);
         $regtable = new registrartable($pdo,$hostable,$sttable);
         if ($arr = fetchadmin($pdo, $_POST['tele'], $_POST['password'])) {
-            $m = 34;
+            $_SESSION = [];
+            if (session_status()==PHP_SESSION_ACTIVE)session_destroy();
+            
+            session_start([
+                'cookie_lifetime' => 86400,
+            ]);
+            $_SESSION['admin'] = $arr['tier'];
+            $_SESSION['name'] =$arr['name'];
+            header("Location:adminhome.php");
         } else if ($regtable->checkpassword($_POST['tele'], $_POST['password'])) {
             $_SESSION = [];
             if (session_status()==PHP_SESSION_ACTIVE)session_destroy();
@@ -36,9 +51,10 @@ if (! isset($_POST['tele']) || ! isset($_POST['password'])) {
             session_start([
                 'cookie_lifetime' => 86400,
             ]);
-            $arr = $regtable->findbytele($_POST['tele']);
+            $arr = $regtable->findbytele($_POST['tele'],true);
             foreach ($arr as $key => $value) {
                 $_SESSION[$key] = $value;
+                
             }
             $_SESSION['admin'] = 0;
             header("Location:edit.php?action=edit");

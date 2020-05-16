@@ -2,7 +2,7 @@
 
 function assign(&$hos,$applicans) {
     $hos['registrar'] = array_slice($applicans, 0,$hos['capacity']);
-    return array_slice($applicans, $hos['capacity']-1);
+    return array_slice($applicans, $hos['capacity']);
 }
 function insertionsort($arr,$index,$decend = false) {
     //this $x to reverse sorting order
@@ -96,7 +96,7 @@ function clalculate($regarray,$hosarray) {
         from the itration, this happen when a hospital
         ['available'] value is changed after the registrar
         has entered his/her application
-        so th Alghorithm won't pick him/her
+        so th Alghorithm won't pick him/her,
         very long comment XD*/
         $bool = $remains[$iterationIndex];
         $remains[$iterationIndex] =[];  
@@ -108,11 +108,11 @@ function clalculate($regarray,$hosarray) {
                         
                       $applicans = array_merge($hospital['registrar'],$applicans);
                       if (!count($applicans)<=$hospital['capacity']){
+                           /*Giving Advantage to Registrars According to their previous shifts*/
+                           $applicans = insertionsort($applicans, 'tier',true);
                           /*insertion sort: senior first*/
-                          $applicans = insertionsort($applicans, 'shift');
-                          //////////
-                          /*Giving Advantage to Registrars According to their previous shifts*/
-                          $applicans = insertionsort($applicans, 'tier');
+                          $applicans = insertionsort($applicans, 'shift',true);
+                          //////////                      
                           /*if the registrar has previous shift in the same hospital 
                            * moov to end of the list
                            */
@@ -138,7 +138,7 @@ function clalculate($regarray,$hosarray) {
                     $applicans = array_merge($hospital['registrar'],$applicans);
                     if (!count($applicans)<=$hospital['capacity']){
                         //Arrange according to shift number jonior first
-                        $applicans = insertionsort($applicans, 'shift',true);
+                        $applicans = insertionsort($applicans, 'shift',false);
                         //////////////////
                         //put registrars who has done shift outside Khartoum first
                         $m =count($applicans);
@@ -171,7 +171,7 @@ function clalculate($regarray,$hosarray) {
                         if (!$applicans = takeApplicans($hospital,$bool ) ) break;
                          $applicans = array_merge($hospital['registrar'],$applicans);
                          /*senior first*/
-                         $applicans = insertionsort($applicans, 'shift');
+                         $applicans = insertionsort($applicans, 'shift',true);
                          //////////////
                          // if a registrar had `the` previous shift in the same hospital remoov entirly :
                             $m =count($applicans);
@@ -206,7 +206,7 @@ function clalculate($regarray,$hosarray) {
                          if (!$applicans = takeApplicans($hospital,$bool ) ) break;
                          $applicans = array_merge($hospital['registrar'],$applicans);
                          /*senior first*/
-                         $applicans = insertionsort($applicans, 'shift');
+                         $applicans = insertionsort($applicans, 'shift',true);
                          //////////////
                          //if A registrar is residant of the same city put first
                          $m =count($applicans);
@@ -250,6 +250,6 @@ function clalculate($regarray,$hosarray) {
         //this a safty kill switch
         $kill++;
     }while (!empty($remains[0])||!empty($remains[1])||!empty($remains[2])||$kill <50);
-    return $hosarray;
+    return [$hosarray,$remains[3]];
 }
 

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html dir="rtl" lang="ar" >
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -5,16 +6,23 @@
   <title>التقديم</title>
  <link href="style.css" rel="stylesheet">
 </head>
-<body>
+<body class="admin">
 <header>التقديم الإلكتروني</header>
 <main>
-    <?=$output?>
+   <form id ="g">
+       <div id="hos">
+       <label for="name">إسم المستشفى</label>
+        <input type="text" id = "name">
+        <input type="submit" disabled hidden>
+        <label for="available">متاح للتوزيع</label>
+        <input id="available" type="checkbox" >
+    </div>
+    </form>
+    <button onclick="addit()">إضافة</button>
+   <script src="script.js"></script>
 </main>
 <footer>
-<?php if (session_status() == PHP_SESSION_ACTIVE && ! empty($_SESSION)&& isset($_SESSION['admin'])
-    && $_SESSION['admin'] > 0){?>
-    <button onclick="window.location.href='adminhome.php';">رئيسية الإدارة</button>
-    <?php }?>
+    
     <button onclick="window.location.href='index.php';" >الرئيسية</button>
     <button onclick="window.location.href='contact.php';" >راسلنا</button>
 </footer>

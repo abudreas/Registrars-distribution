@@ -20,10 +20,15 @@
         </tr>
         <tr>
         <td>السكن</td>
-            <td><?=htmlspecialchars($myregistrar['resid'][0])?></td>
+            <td><?=htmlspecialchars($myregistrar['resid'])?></td>
             
         </tr>
-        
+        <?php if($admin){ ?>
+        <tr>
+        <td>كلمة السر</td>
+        <td><?=$myregistrar['password']?></td>
+        </tr>
+        <?php } ?>
     </tbody>
 </table>
 <?php if (isset($myregistrar['shift1'])&&!$small) { ?>
@@ -53,17 +58,17 @@
        
         <tr>
         <td>الرغبة الأولى</td>
-            <td><?=htmlspecialchars($myregistrar['app1'])?></td>
+            <td><?=htmlspecialchars($myregistrar['app'][1])?></td>
             
         </tr>
         <tr>
         <td>الرغبة الثانية</td>
-            <td><?=htmlspecialchars($myregistrar['app2'])?></td>
+            <td><?=htmlspecialchars($myregistrar['app'][2])?></td>
             
         </tr>
         <tr>
         <td>الرغبة الثالثة</td>
-            <td><?=htmlspecialchars($myregistrar['app3'])?></td>
+            <td><?=htmlspecialchars($myregistrar['app'][3])?></td>
             
         </tr>
     </tbody>
@@ -71,6 +76,8 @@
 <?php if (!$small) {?>
 <form action="login.php" method="POST" disabled >
 <input type="text" name="tele" value="<?=$myregistrar['tele']??''?>"  hidden >
-<button type="submit">تعديل</button>
-<?php }?>
+
+<button  type="submit">تعديل</button>
+
 </form>
+<?php }?>

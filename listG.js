@@ -18,16 +18,16 @@ let f1 = document.getElementById("firstApplication");
 let f2 = document.getElementById("seconApplication");
 let f3 = document.getElementById("thirdApplication");
 //show popup
-if(isfound){
-document.getElementById('popupform').style.display= "block";
-form.style.display= "none";
+if (isfound) {
+  document.getElementById("popupform").style.display = "block";
+  form.style.display = "none";
 }
 ///
 pshift.selectedIndex = prevshift;
 filit();
 filapp();
 fillstate();
-fillcity()
+fillcity();
 addHos();
 pshift.addEventListener("change", addHos);
 state.addEventListener("change", fillcity);
@@ -147,7 +147,7 @@ function fillstate() {
     state.add(CreateOpt(element[0]));
   }
   for (const arr of statsarry) {
-    if (arr.includes(prevstate[1])) {
+    if (arr[0].includes(prevstate)) {
       state.selectedIndex = x + 1;
       break;
     }
@@ -179,18 +179,22 @@ function fillcity() {
         city.add(CreateOpt(element));
       }
       city.remove(1);
-      option = CreateOpt("أخرى");
-      option.value = state.selectedOptions[0];
-      city.add(option);
-      city.selectedIndex = statsarry[xam].indexOf(prevstate[0]);
-      if (city.selectedIndex < 0) city.selectedIndex = 0;
+      let x = statsarry[xam].length;
+      for (let index = 1; index < x; index++) {
+        if (statsarry[xam][index].includes(prevcity)){
+          city.selectedIndex = index;
+        }
+        
+      }
+      
+      if (city.selectedIndex <= 0) city.selectedIndex = 0;
+      city.disabled = false;
+      city.hidden = false;
+      citylable.hidden = false;
     }
-    city.disabled = false;
-    city.hidden = false;
-    citylable.hidden = false;
   }
 }
-function closeit(){
-  document.getElementById('popupform').style.display= "none";
-  form.style.display= "block";
+function closeit() {
+  document.getElementById("popupform").style.display = "none";
+  form.style.display = "block";
 }

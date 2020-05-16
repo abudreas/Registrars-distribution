@@ -3,20 +3,20 @@
  <ul>
   <li>
     <label for="name">الإسم:</label>
-    <input value="<?=$myregistrar['name']??""?>" type="text" id="name" name="name" required pattern = "[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+|[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+|[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+|[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+">
+    <input value="<?=$myregistrar['name']??""?>" type="text" id="name" name="basic[name]" required pattern = "[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+|[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+|[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+|[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+">
   </li>
   <label for="resid">الولاية:</label>
-    <select id="resid" name="resid" required> 
+    <select id="resid" name="basic[resid]" required> 
     
     </select>
   </li>
   <li>
   <lable id = "citylable" for="city" hidden>أقرب مدينة</lable>
-  <select id = "city" name = "resid" required hidden disabled></select>
+  <select id = "city" name = "basic[city]" required hidden disabled></select>
   </li>
   <li>
     <label for="tele">رقم الهاتف :</label>
-    <input type="tel" id="tele" name="tele" pattern="[0]{1}[0-9]{9}" required
+    <input type="tel" id="tele" name="basic[tele]" pattern="[0]{1}[0-9]{9}" required
    
     <?php if (isset($_GET['action']) && $_GET['action'] == 'edit'){ echo 'hidden';}?> value="<?=$myregistrar['tele']??""?>">
      <?php if (isset($_GET['action']) && $_GET['action'] == 'edit'){ ?>
@@ -31,13 +31,13 @@
     <input type="password" id="password" name="password"
     hidden
      value="<?=$myregistrar['password']??""?>">
-     <input type="password" disabled value=<?=$password?>>
+     <input type="password" disabled value=<?=$myregistrar['password']??""?>>
      
   </li>
   <?php }?>
   <label for="currentShift" > رقم الشفت الحالي:</label>
  <li>
-  <select name="shift" id="currentShift">
+  <select name="basic[shift]" id="currentShift">
 <option value=0>الكورس</option>
 <option value=1> الشفت الأول</option>
 <option value=2>الشفت الثاني </option>
@@ -50,19 +50,19 @@
 <fieldset id = "prevShift">
 <legend>الشفتات السابقة</legend>
  <li> <label for="firstShift">الشفت الأول (من غير الكورس)</label></li>
-  <select name="shift1" id="firstShift" disabled required></select>
+  <select name="prev[1]" id="firstShift" disabled required></select>
  <li> <label for="secondShift">الشفت الثاني</label></li>
-  <select name="shift2" id="secondShift" disabled required></select>
+  <select name="prev[2]" id="secondShift" disabled required></select>
  <li> <label for="shift3">الشفت الثالث</label></li>
-  <select name="shift3" id="thirdShift" disabled required></select>
+  <select name="prev[3]" id="thirdShift" disabled required></select>
  <li> <label for="forthShift">الشفت الرابع</label></li>
-  <select name="shift4" id="forthShift" disabled required></select>
+  <select name="prev[4]" id="forthShift" disabled required></select>
  <li> <label for="fifthShift">الشفت الخامس</label></li>
-  <select name="shift5" id="fifthShift" disabled required></select>
+  <select name="prev[5]" id="fifthShift" disabled required></select>
  <li><label for="sixShift">الشفت السادس</label></li>
-  <select name="shift6" id="sixShift" disabled required></select>
+  <select name="prev[6]" id="sixShift" disabled required></select>
   <li><label for="seventhtShift">الشفت السابع</label></li>
-  <select name="shift7" id="seventhtShift" disabled required></select>
+  <select name="prev[7]" id="seventhtShift" disabled required></select>
 
 </fieldset>
 
@@ -70,11 +70,11 @@
  <legend>الرغبات</legend>
  <small id="err" hidden>الرجاء إختيار ثلاث رغبات مختلفة</small>
  <li><label for="firstApplication">الرغبة الأولى</label></li>
- <select name="app1" id = "firstApplication" required></select>
+ <select name="app[1]" id = "firstApplication" required></select>
  <li><label for ="seconApplication">الرغبة الثانية</label></li>
- <select name="app2" id ="seconApplication" required></select>
+ <select name="app[2]" id ="seconApplication" required></select>
  <li><label for="thirdApplication">الرغبة الثالثة</label></li>
-<select name="app3" id ="thirdApplication" required></select>
+<select name="app[3]" id ="thirdApplication" required></select>
  </fieldset>
   <li class="button">
   <button type="submit">إرسال</button>
@@ -97,17 +97,18 @@
      required>
      <small>للحصول على كلمة السر عليك مراسلة المشرف</small>
   </li>
-  <button type = "sumbit">تعديل</button>
+  <button  type = "sumbit">تعديل</button>
   <button onclick = "closeit()">إلغاء</button> 
     </form>
 </div>
 <script> 
 var isfound = <?=$isfound??0?>;
 var prevshift = <?=$myregistrar['shift']??0?>;
-var prevstate = <?=json_encode($myregistrar['resid'])??"[0,0]"?>;
+var prevstate = "<?=$myregistrar['resid']??0?>";
+var prevcity ="<?=$myregistrar['city']??0?>";
 var statsarry = <?=json_encode($stats,JSON_UNESCAPED_UNICODE)?>;
-var myregprev = <?=json_encode($myregistrar['arrshift'])?>;
-var myregapp = <?=json_encode($myregistrar['arrapp'])?>;
+var myregprev = <?=json_encode($myregistrar['prev'])?>;
+var myregapp = <?=json_encode($myregistrar['app'])?>;
 var availhops = <?=json_encode($availhosps,JSON_UNESCAPED_UNICODE)?>;
 var notavailhops = <?=json_encode($notavailhosps,JSON_UNESCAPED_UNICODE)?>;
 </script>

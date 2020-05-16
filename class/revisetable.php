@@ -16,7 +16,7 @@ public function __construct(REGISTRARTABLE $regtable){
     
 }
 public function get($tele,$small){
-$myregistrar = $this->regtable->findbytele($tele,true);
+$myregistrar = $this->regtable->findbytele($tele,true,true);
 
 if (empty($myregistrar)){
     return false;
@@ -24,7 +24,11 @@ if (empty($myregistrar)){
     $myregistrar['shift'] = $this->shiftlist[$myregistrar['shift']];
 
 }
-
+$admin = false;
+if (session_status() == PHP_SESSION_ACTIVE && ! empty($_SESSION)&& isset($_SESSION['admin'])
+&& $_SESSION['admin'] > 2){
+    $admin = true;
+}
 
    
 

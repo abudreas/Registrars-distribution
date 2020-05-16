@@ -1,0 +1,308 @@
+.form-popup {
+  display: none;
+  position: fixed;
+  mask-type: alpha;
+}
+form , div {
+  /* Center the form on the page */
+ 
+  margin: 30px 0px 0px 0px;
+  width: auto;
+  /* Form line */
+  padding: 1em;
+  border: 1px solid rgb(18, 21, 187);
+  border-radius: 1em;
+  background-color: rgb(186, 207, 212);
+  text-align: right;
+}
+div.flexcontainer{
+  margin-top: auto;
+  display: inline-flex;
+  background-color: initial;
+  border: initial;
+}
+div.messages{
+  margin: 3px 100px;
+  margin-bottom: 0px;
+  width: 300px;
+  height: 80px;
+  overflow: auto;
+}
+div.messages h2{
+  margin-top: 0px;
+  text-align: center;
+  font-size: medium;
+}
+p.msgcontainer{
+  background-color: azure;
+  
+}
+body {
+  
+background-color: bisque;
+
+margin: 0 auto;
+}
+
+header {
+/* Center the form on the page */
+margin: 0px 0px 15px 0px;
+width: auto;
+/* Form outline */
+padding: 1em;
+border: 1px solid rgb(18, 21, 187);
+border-radius: 1em;
+background-color: rgb(186, 207, 212);
+font-family: Arial;
+font-size: x-large;
+font-weight:  900;
+text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+form li + li {
+  margin-top: 1em;
+}
+
+
+
+input{
+  /* To make sure that all text fields have the same font settings
+     By default, textareas have a monospace font */
+  font: 1em sans-serif;
+
+  /* Uniform text field size */
+  width: 200px;
+  box-sizing: border-box;
+
+  /* Match form field borders */
+  border: 1px solid #999;
+  border-radius: 0.5em;
+  
+}
+#tier{
+  width: auto;
+}
+
+input:focus {
+  /* Additional highlight for focused elements */
+  border-color: #000;
+}
+input.check{
+  width: auto;
+}
+input.num{
+  width: 50;
+}
+button.warning{
+background-color: red;
+border-color: mediumblue;
+}
+
+.button {
+  /* Align buttons with the text fields */
+  padding-right: 200px; /* same size as the label elements */
+  padding-top: 50px;
+}
+.grean{
+  background-color: rgb(43, 145, 43);
+}
+.saveit{
+  margin: 20px 200px auto;
+  font-size: large;
+}
+
+button{
+  /* This extra margin represent roughly the same space as the space
+     between the labels and their text fields */
+  margin-left: .5em;
+  border-radius: 0.5em;
+  box-shadow: 2px 4px 4px black;
+  cursor: pointer;
+}
+select {
+  border-radius: 0.5em;
+  width: 200px;
+}
+select:focus{
+  border-color: #000;
+}
+fieldset {
+  border-radius: 0.5em;
+box-shadow:2px 4px 4px black;
+}
+small {
+  color: crimson;
+}
+legend{
+  font-weight: bold;
+  text-shadow: 2px 2px 4px black;
+}
+table,
+td {
+  width: inherit;
+    border: 1px solid rgb(18, 21, 187);
+    border-bottom: 1px;
+}
+
+thead,
+tfoot {
+  width: inherit;
+    background-color: rgb(87, 135, 233);
+    color: black;
+    border-bottom: 1px;
+}
+footer {
+  margin: 30px 0px 7px;
+  text-align: center;
+  align-content: center;
+  border: 1px solid rgb(18, 21, 187);
+  border-radius: 1em;
+  background-color: rgb(186, 207, 212);
+  padding: 30px;
+}
+strong {
+  color: white;
+  background-color: darkred;
+}
+.popup {
+  display: none;
+  position: fixed;
+  margin-left: -142px;
+  left: 50%;
+  top: 10px;
+  width: 300px;
+  background-color: rgb(30, 230, 23);
+  border:1px solid crimson;
+  }
+  .available{
+    background-color: #999;
+    border: 1px solid red;
+  }
+  .deleted{
+    background-color: rgb(24, 24, 24);
+    border: 2px solid black;
+  }
+ 
+  .placeholder{
+      opacity:0;       
+     transition: padding 1s;
+     display: inline;
+     padding: 0px 0px 0px 0px;
+     margin: 0px 0px 0px 0px;
+     border: 0px;
+     
+     
+  }
+  .collapse{
+      width: 100px;
+      background-color: red;
+     
+  }
+  .expand{
+      
+      padding: 0px 68px 0px 0px;
+  }
+  div.drop{
+    width: 100px;
+    text-align: right;
+    padding-right: 10px;
+    margin: 10px 10px 10px;
+    align-self: auto;
+    background-color: azure;
+  }
+  .remains{
+    margin-top: 2px;
+    width: 200px;
+    white-space: nowrap;
+    overflow: auto;
+    height: 100px;
+    /*text-align: right;*/
+  }/*
+  .drop{
+display: block;
+  }*/
+  
+  .dragon{
+    margin: 2px 2px 2px 2px;
+    width: 70px;
+    height: 20px;
+    padding: 2px 2px;
+    overflow: hidden;
+    background-color: aliceblue;
+    border: 3px solid rgb(12, 12, 29);
+    cursor: grab;
+    
+  }
+  .dragon.shift0{
+    background-color: rgb(83, 231, 83);
+  }
+  .dragon.shift1{
+    background-color: rgb(209, 231, 83);
+  }
+  .dragon.shift2{
+    background-color: rgb(83, 196, 231);
+  }
+  .dragon.shift3{
+    background-color: rgb(20, 94, 204);
+  }
+  .dragon.shift4{
+    background-color: rgb(6, 19, 94);
+  }
+  .dragon.shift5{
+    background-color: rgb(75, 34, 63);
+    color: lawngreen;
+  }
+  .dragon.shift6{
+    background-color: rgb(66, 2, 47);
+    color: lawngreen;
+  }
+  .dragon.shift7{
+    background-color: rgb(226, 10, 21);
+  }
+  .dragon.danger{
+  
+    border: 2px solid red;
+    box-shadow: 3px 3px red;
+    background-color: darkgrey;
+  }
+  .dragon.warning{
+    
+    border: 2px solid yellow;
+    box-shadow: 3px 3px yellow;
+    background-color: darkgrey;
+    color: black !important;
+  }
+  .info{
+    
+    width: 400px;
+    height: 400px;
+  }
+  .info h1{
+    text-align: center;
+    margin-bottom: 4px;
+    padding-bottom: 4px;
+    
+  }
+  .hoscontain{
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    
+    height: 400px;
+    width: 800px;
+    overflow: scroll;
+  }
+  p.regname{
+    margin: 0px 3px 0px;
+    padding: 0px 0px 0px 0px;
+    display: inline;
+    white-space: nowrap;
+    color: inherit;
+  }
+

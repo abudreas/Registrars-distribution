@@ -31,32 +31,38 @@ $this->pdo=$pdo;
             return $this->encode($n1,$n2);
         }
     }
-    public function findbycode(INT $num){
-    $num = $this->decode($num);
-    $sql = 'SELECT * FROM `statetable` WHERE `id` = '.$num[0];
+    public function findcity(INT $cityID){
+    
+    $sql = 'SELECT `name` FROM `cities` WHERE `id` = '.$cityID;
     $arr = $this->query($sql)->fetch(PDO::FETCH_NUM);
-    $state = $arr[1];
-    $resid = $arr[$num[1]];
-    return [$resid,$state];
+    if (isset($arr[0])){
+    return $arr[0];
+    } else {
+        return 0;
+    }
+    }
+    public function findstate(INT $stateID){
+        $sql = 'SELECT `name` FROM `statetable` WHERE `id` = '.$stateID;
+        $arr = $this->query($sql)->fetch(PDO::FETCH_NUM);
+        
+        return $arr[0];
     }
     public function all(){
-        $sql = 'SELECT * FROM `statetable`';
+        $sql = 'SELECT `id` , `name` FROM statetable';
         $arr = $this->query($sql)->fetchall(PDO::FETCH_NUM);
         //trim $arr from null values
-        foreach ($arr as $key1 => $value1) {
-            foreach ($value1 as $key => $value) {
-                if (!isset($value)) unset($value1[$key]);
-            }
-            unset($value1[0]);
-            //to return the right index
-            $arr[$key1] = [];
-            foreach ($value1 as $element) {
-                $arr[$key1][]=$element;
-            }
+        foreach ($arr as $key => $value) {
+                $state[$key][]=$value;
+                $sql = 'SELECT `id` ,`name`  FROM cities WHERE `stateID`='.$value[0];
+                $cities = $this->query($sql)->fetchall(PDO::FETCH_NUM);
+                foreach ($cities as $key2 => $value2) {
+                    $state[$key][]=$value2;
+                }
             
         }
         //
-        return $arr;
+        
+         return $state;
     }
 
     private function encode($n1,$n2){

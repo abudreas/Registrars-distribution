@@ -8,6 +8,7 @@ form , div {
   border: 1px solid rgb(18, 21, 187);
   border-radius: 1em;
   background-color: rgb(186, 207, 212);
+  text-align: right;
 }
 body {
   
@@ -16,6 +17,7 @@ border: 1px solid #000;
 width: 300;
 margin: 0 auto;
 }
+
 header {
 /* Center the form on the page */
 margin: 0px 0px 15px 0px;
@@ -60,6 +62,7 @@ input{
   /* Match form field borders */
   border: 1px solid #999;
   border-radius: 0.5em;
+  
 }
 
 input:focus {
@@ -133,3 +136,4 @@ strong {
   top: 10px;
   width: 300px;
   }
+  

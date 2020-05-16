@@ -1,0 +1,79 @@
+<html dir="rtl" lang="ar" >
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>التقديم</title>
+ <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<header>التقديم الإلكتروني</header>
+<main>
+    <form action="testa.php" method="post" id = "mainForm">
+    <div><p>الرجاء ملء الفورم </p><p>جميع الحقول إجبارية</p></div>
+ <ul>
+  <li>
+    <label for="name">الإسم:</label>
+    <input value="التوم تستا علي" type="text" id="name" name="basic[name]" required pattern = "[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+|[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+|[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+|[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+[ ]+[ء-ي]+">
+  </li>
+  <label for="resid">الولاية:</label>
+    <input id="resid" name="basic[resid]" required value="بحري"> 
+    
+    
+  </li>
+  <li>
+  <lable id = "citylable" for="city" hidden>أقرب مدينة</lable>
+  <select id = "city" name = "basic[resid]" required hidden disabled></select>
+  </li>
+  <li>
+    <label for="tele">رقم الهاتف :</label>
+    <input type="tel" id="tele" name="basic[tele]" pattern="[0]{1}[0-9]{9}" required
+   
+     value="0123456789">
+           <small>الرقم يبدأ بصفر و من غير مفتاح</small>
+       </li>
+    <label for="currentShift" > رقم الشفت الحالي:</label>
+ <li>
+  <input value="5" name="basic[shift]" id="currentShift">
+
+<fieldset id = "prevShift">
+<legend>الشفتات السابقة</legend>
+ <li> <label for="firstShift">الشفت الأول (من غير الكورس)</label></li>
+  <input name="prev[1]" id="firstShift"  required value="1">
+ <li> <label for="secondShift">الشفت الثاني</label></li>
+  <input name="prev[2]" id="secondShift"  required value="2">
+ <li> <label for="shift3">الشفت الثالث</label></li>
+  <input name="prev[3]" id="thirdShift"  required value="3">
+ <li> <label for="forthShift">الشفت الرابع</label></li>
+  <input name="prev[4]" id="forthShift"  required value="1">
+ <li> <label for="fifthShift">الشفت الخامس</label></li>
+  <input name="prev[5]" id="fifthShift"  required value="2">
+ <li><label for="sixShift">الشفت السادس</label></li>
+  <select name="prev[6]" id="sixShift" disabled required></select>
+  <li><label for="seventhtShift">الشفت السابع</label></li>
+  <select name="prev[7]" id="seventhtShift" disabled required></select>
+
+</fieldset>
+
+<fieldset id = "application">
+ <legend>الرغبات</legend>
+<input name="app[]" value="1">
+<input name="app[]" value="2">
+<input name="app[]" value="3">
+
+ </fieldset>
+  <li class="button">
+  <button type="submit">إرسال</button>
+</li>
+ </ul>
+ 
+</form>
+
+</main>
+<footer>
+    
+    <button onclick="window.location.href='index.php';" >الرئيسية</button>
+    <button onclick="window.location.href='contact.php';" >راسلنا</button>
+</footer>
+
+</body>
+</html>
