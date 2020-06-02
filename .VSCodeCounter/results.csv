@@ -1,24 +1,40 @@
-"filename", "language", "JavaScript", "PHP", "CSS", "comment", "blank", "total"
-"c:\xampp\htdocs\FormPHP2\class\hospitaltable.php", "PHP", 0, 52, 0, 1, 17, 70
-"c:\xampp\htdocs\FormPHP2\class\registrartable.php", "PHP", 0, 80, 0, 1, 17, 98
-"c:\xampp\htdocs\FormPHP2\class\revisetable.php", "PHP", 0, 27, 0, 0, 11, 38
-"c:\xampp\htdocs\FormPHP2\class\statetable.php", "PHP", 0, 66, 0, 3, 7, 76
-"c:\xampp\htdocs\FormPHP2\contact.php", "PHP", 0, 5, 0, 0, 3, 8
-"c:\xampp\htdocs\FormPHP2\edit.php", "PHP", 0, 114, 0, 3, 15, 132
-"c:\xampp\htdocs\FormPHP2\include\databaseconnection.php", "PHP", 0, 3, 0, 0, 0, 3
-"c:\xampp\htdocs\FormPHP2\index.php", "PHP", 0, 5, 0, 0, 4, 9
-"c:\xampp\htdocs\FormPHP2\listG.js", "JavaScript", 167, 0, 0, 10, 11, 188
-"c:\xampp\htdocs\FormPHP2\login.php", "PHP", 0, 53, 0, 0, 7, 60
-"c:\xampp\htdocs\FormPHP2\newdb.php", "PHP", 0, 40, 0, 0, 6, 46
-"c:\xampp\htdocs\FormPHP2\revise.php", "PHP", 0, 27, 0, 0, 5, 32
-"c:\xampp\htdocs\FormPHP2\style.css", "CSS", 0, 0, 102, 13, 12, 127
-"c:\xampp\htdocs\FormPHP2\templates\confirm.html.php", "PHP", 0, 26, 0, 0, 6, 32
-"c:\xampp\htdocs\FormPHP2\templates\contact.html.php", "PHP", 0, 7, 0, 0, 0, 7
-"c:\xampp\htdocs\FormPHP2\templates\edit.html.php", "PHP", 0, 104, 0, 0, 8, 112
-"c:\xampp\htdocs\FormPHP2\templates\home.html.php", "PHP", 0, 6, 0, 0, 0, 6
-"c:\xampp\htdocs\FormPHP2\templates\layout.html.php", "PHP", 0, 18, 0, 0, 2, 20
-"c:\xampp\htdocs\FormPHP2\templates\password.html.php", "PHP", 0, 16, 0, 0, 2, 18
-"c:\xampp\htdocs\FormPHP2\templates\revise.html.php", "PHP", 0, 8, 0, 0, 1, 9
-"c:\xampp\htdocs\FormPHP2\templates\revisetable.html.php", "PHP", 0, 62, 0, 0, 13, 75
-"c:\xampp\htdocs\FormPHP2\testa.php", "PHP", 0, 20, 0, 2, 2, 24
-"Total", "-", 167, 739, 102, 33, 149, 1190
+"filename", "language", "PHP", "CSS", "JavaScript", "HTML", "comment", "blank", "total"
+"c:\xampp\htdocs\FormPHP2\admin.css", "CSS", 0, 308, 0, 0, 13, 36, 357
+"c:\xampp\htdocs\FormPHP2\adminhome.php", "PHP", 9, 0, 0, 0, 0, 4, 13
+"c:\xampp\htdocs\FormPHP2\class\hospitaltable.php", "PHP", 88, 0, 0, 0, 1, 13, 102
+"c:\xampp\htdocs\FormPHP2\class\prepare.php", "PHP", 61, 0, 0, 0, 8, 8, 77
+"c:\xampp\htdocs\FormPHP2\class\registrartable.php", "PHP", 189, 0, 0, 0, 3, 29, 221
+"c:\xampp\htdocs\FormPHP2\class\revisetable.php", "PHP", 32, 0, 0, 0, 0, 10, 42
+"c:\xampp\htdocs\FormPHP2\class\statetable.php", "PHP", 70, 0, 0, 0, 2, 10, 82
+"c:\xampp\htdocs\FormPHP2\contact.php", "PHP", 5, 0, 0, 0, 0, 3, 8
+"c:\xampp\htdocs\FormPHP2\dist.js", "JavaScript", 0, 0, 280, 0, 19, 43, 342
+"c:\xampp\htdocs\FormPHP2\dist.php", "PHP", 72, 0, 0, 0, 0, 16, 88
+"c:\xampp\htdocs\FormPHP2\edit.php", "PHP", 144, 0, 0, 0, 3, 18, 165
+"c:\xampp\htdocs\FormPHP2\edithos.php", "PHP", 73, 0, 0, 0, 11, 6, 90
+"c:\xampp\htdocs\FormPHP2\include\databaseconnection.php", "PHP", 4, 0, 0, 0, 0, 0, 4
+"c:\xampp\htdocs\FormPHP2\include\distfunctions.php", "PHP", 211, 0, 0, 0, 42, 17, 270
+"c:\xampp\htdocs\FormPHP2\index.php", "PHP", 5, 0, 0, 0, 0, 4, 9
+"c:\xampp\htdocs\FormPHP2\listG.js", "JavaScript", 0, 0, 177, 0, 11, 13, 201
+"c:\xampp\htdocs\FormPHP2\login.php", "PHP", 67, 0, 0, 0, 0, 9, 76
+"c:\xampp\htdocs\FormPHP2\newdb.php", "PHP", 68, 0, 0, 0, 0, 12, 80
+"c:\xampp\htdocs\FormPHP2\prototype.htm", "HTML", 0, 0, 0, 29, 0, 2, 31
+"c:\xampp\htdocs\FormPHP2\revise.php", "PHP", 27, 0, 0, 0, 0, 5, 32
+"c:\xampp\htdocs\FormPHP2\script.js", "JavaScript", 0, 0, 167, 0, 6, 16, 189
+"c:\xampp\htdocs\FormPHP2\style.css", "CSS", 0, 110, 0, 0, 13, 16, 139
+"c:\xampp\htdocs\FormPHP2\templates\adminhome.html.php", "PHP", 6, 0, 0, 0, 0, 0, 6
+"c:\xampp\htdocs\FormPHP2\templates\adminlayout.html.php", "PHP", 23, 0, 0, 0, 0, 3, 26
+"c:\xampp\htdocs\FormPHP2\templates\confirm.html.php", "PHP", 26, 0, 0, 0, 0, 6, 32
+"c:\xampp\htdocs\FormPHP2\templates\contact.html.php", "PHP", 7, 0, 0, 0, 0, 0, 7
+"c:\xampp\htdocs\FormPHP2\templates\distoOptions.html.php", "PHP", 6, 0, 0, 0, 0, 0, 6
+"c:\xampp\htdocs\FormPHP2\templates\distro.html.php", "PHP", 111, 0, 0, 0, 0, 6, 117
+"c:\xampp\htdocs\FormPHP2\templates\distroPublish.html.php", "PHP", 20, 0, 0, 0, 1, 2, 23
+"c:\xampp\htdocs\FormPHP2\templates\edit.html.php", "PHP", 108, 0, 0, 0, 0, 8, 116
+"c:\xampp\htdocs\FormPHP2\templates\edithos.html.php", "PHP", 74, 0, 0, 0, 0, 6, 80
+"c:\xampp\htdocs\FormPHP2\templates\home.html.php", "PHP", 6, 0, 0, 0, 0, 0, 6
+"c:\xampp\htdocs\FormPHP2\templates\layout.html.php", "PHP", 22, 0, 0, 0, 0, 1, 23
+"c:\xampp\htdocs\FormPHP2\templates\password.html.php", "PHP", 16, 0, 0, 0, 0, 2, 18
+"c:\xampp\htdocs\FormPHP2\templates\revise.html.php", "PHP", 8, 0, 0, 0, 0, 1, 9
+"c:\xampp\htdocs\FormPHP2\templates\revisetable.html.php", "PHP", 70, 0, 0, 0, 0, 14, 84
+"c:\xampp\htdocs\FormPHP2\testa.php", "PHP", 18, 0, 0, 0, 1, 2, 21
+"c:\xampp\htdocs\FormPHP2\testa2.html", "HTML", 0, 0, 0, 68, 0, 11, 79
+"Total", "-", 1646, 418, 624, 97, 134, 352, 3271

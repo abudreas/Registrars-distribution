@@ -6,6 +6,7 @@ function assign(&$hos,$applicans) {
 }
 function insertionsort($arr,$index,$decend = false) {
     //this $x to reverse sorting order
+    //$index is the value to be compared
     if ($decend){
         $x = -1;
     }else{
@@ -70,20 +71,21 @@ function checkPrevByTier($reg,INT $tier) {
     return $x;
 }
 function shift(&$arr,$index,$newpos) {
+    $value = $arr[$index];
     if ($index < $newpos) {
-        $value = $arr[$index];
+      
         for ($i = $index; $i < $newpos; $i++) {
             $arr[$i]=$arr[$i+1];
         }
-        $arr[$newpos] = $value;
+       
     }elseif ($index > $newpos) {
-        $value = $arr[$index];
+       
         for ($i = $index; $i > $newpos; $i--) {
             $arr[$i]=$arr[$i-1];
         }
-        $arr[$newpos]= $value;
+      
     }
-    
+    $arr[$newpos]= $value;
     
 }
 function clalculate($regarray,$hosarray) {
@@ -249,7 +251,19 @@ function clalculate($regarray,$hosarray) {
         if ($iterationIndex>2)$iterationIndex=0;
         //this a safty kill switch
         $kill++;
-    }while (!empty($remains[0])||!empty($remains[1])||!empty($remains[2])||$kill <50);
-    return [$hosarray,$remains[3]];
+    }while ((!empty($remains[0])||!empty($remains[1])||!empty($remains[2]))&& $kill <100);
+   //assign a ['distro'] `hospital ID`,propertiy to each registrar
+   foreach($hosarray as &$hospital){
+       foreach($hospital['registrar'] as &$registrar){
+           $newhos = $hospital;
+           unset($newhos['registrar']);
+        $registrar['distro']=$newhos;
+       }
+   }
+   $zeroHospital = ['id'=>0,'name'=>'0','capacity'=>0,'state'=>0,'city'=>0,'tier'=>0];
+foreach ($remains[3] as &$registrar) {
+    $registrar['distro']=$zeroHospital;
+}
+   return [$hosarray,$remains[3]];
 }
 

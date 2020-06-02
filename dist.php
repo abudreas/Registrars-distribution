@@ -51,7 +51,7 @@ if(!empty($_SESSION) && isset($_SESSION['admin']) && $_SESSION['admin'] > 0){
                 $query='SELECT `save` FROM `result` WHERE `id` =1';
                 $stmnt= $pdo->query($query);
                 $arr=$stmnt->fetch(PDO::FETCH_NUM);
-                if ($arr){
+                if ($arr && $arr[0] != ''){
                     $result = $arr[0];
                     $result=json_decode($result,JSON_OBJECT_AS_ARRAY);
                     ob_start();
@@ -61,6 +61,13 @@ if(!empty($_SESSION) && isset($_SESSION['admin']) && $_SESSION['admin'] > 0){
                 }else{
                     $output="لا يوجد توزيع محفوظ لنشره !";
                 }
+            }else if ($_GET['action']=='reset'){
+                if (session_status() == PHP_SESSION_ACTIVE && ! empty($_SESSION)&& isset($_SESSION['admin'])
+&& $_SESSION['admin'] > 2){
+    $query ="TRUNCATE TABLE  `application`;TRUNCATE TABLE  `previousshifts`;TRUNCATE TABLE  `registrartable`;TRUNCATE TABLE  `result`; INSERT INTO `result` set `save` = '' , `publish` = ''";
+$pdo->exec($query);
+$output = "Reset Done !";
+}
             }
         }else{
             ob_start();

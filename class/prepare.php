@@ -17,7 +17,7 @@ class prepare {
     private function prepareregistrar($regarray,$hosarray){
         //defining a "zero Hospital" , a place holder hospital
         //if non exsited in database
-        $zeroHospital = ['id'=>0,'name'=>'0','capacity'=>0,'state'=>0,'city'=>0,'tier'=>0];
+        $zeroHospital = ['id'=>0,'name'=>'(undefined)','capacity'=>0,'state'=>0,'city'=>0,'tier'=>0];
         /////////////
         foreach ($hosarray as $hospital) {
             $newhosarray[$hospital['id']] = $hospital;
@@ -39,7 +39,7 @@ class prepare {
             //doing the same for applications
             $newreg['apps']=[];
             foreach ($registrar['app'] as $app) {
-                $newreg['apps'][] = $newhosarray[$app]??0;
+                $newreg['apps'][] = $newhosarray[$app]??$zeroHospital;
             }
                 
             

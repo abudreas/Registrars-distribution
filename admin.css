@@ -22,16 +22,34 @@ div.flexcontainer{
   border: initial;
 }
 div.messages{
-  margin: 3px 100px;
+  margin: 3px 0px;
   margin-bottom: 0px;
   width: 300px;
   height: 80px;
   overflow: auto;
+  border-radius: 0px;
+  border: 1px solid black;
+  background-color: azure;
+  
 }
-div.messages h2{
+div.messagesDivcontainer h2{
   margin-top: 0px;
   text-align: center;
   font-size: medium;
+}
+div.messagesDivcontainer{
+
+ margin: 3px 200px;
+ 
+  overflow: hidden;
+}
+div.remainscount{
+  font-size: large;
+  font-weight: 900;
+  margin-top: 3px;
+  height: 40px;
+  border: 1px solid black;
+
 }
 p.msgcontainer{
   background-color: azure;
@@ -170,6 +188,10 @@ strong {
   color: white;
   background-color: darkred;
 }
+span.warning{
+  color: green;
+  background-color: yellow;
+}
 .popup {
   display: none;
   position: fixed;
@@ -216,6 +238,11 @@ strong {
     align-self: auto;
     background-color: azure;
   }
+  .drop.warning,.explain>.warning{
+    border: 2px solid yellow;
+    background-color: darkslategray;
+    color: bisque;
+  }
   .remains{
     margin-top: 2px;
     width: 200px;
@@ -223,11 +250,14 @@ strong {
     overflow: auto;
     height: 100px;
     /*text-align: right;*/
-  }/*
-  .drop{
-display: block;
-  }*/
-  
+  }
+  div.explain{
+    padding: 0px 0px 0px;
+    margin-left: 5px;
+    width: 100px;
+    border-style: none;
+    background-color:  rgb(169, 199, 206);
+  }
   .dragon{
     margin: 2px 2px 2px 2px;
     width: 70px;
@@ -241,47 +271,59 @@ display: block;
   }
   .dragon.shift0{
     background-color: rgb(83, 231, 83);
+    color: black;
   }
   .dragon.shift1{
     background-color: rgb(209, 231, 83);
+    color: rgb(56, 3, 3);
   }
   .dragon.shift2{
     background-color: rgb(83, 196, 231);
+    color: black;
   }
   .dragon.shift3{
     background-color: rgb(20, 94, 204);
+    color: black;
   }
   .dragon.shift4{
     background-color: rgb(6, 19, 94);
+    color: rgb(187, 88, 8);
   }
   .dragon.shift5{
-    background-color: rgb(75, 34, 63);
+  
+    background-color: rgb(90, 2, 2);
     color: lawngreen;
   }
   .dragon.shift6{
-    background-color: rgb(66, 2, 47);
+    background-color: rgb(145, 21, 107);
     color: lawngreen;
   }
   .dragon.shift7{
     background-color: rgb(226, 10, 21);
+  }
+  .dragon.warning{
+    
+    border: 2px solid yellow;
+    box-shadow:3px 3px yellow ;
+    
+    background-color: darkgrey;
+    color: black !important;
+    animation: blinking 1s linear 0s infinite ;
   }
   .dragon.danger{
   
     border: 2px solid red;
     box-shadow: 3px 3px red;
     background-color: darkgrey;
-  }
-  .dragon.warning{
-    
-    border: 2px solid yellow;
-    box-shadow: 3px 3px yellow;
-    background-color: darkgrey;
     color: black !important;
+    animation: blinking 1s linear 0s infinite ;
   }
+ 
   .info{
     
     width: 400px;
     height: 400px;
+    overflow: auto;
   }
   .info h1{
     text-align: center;
@@ -300,9 +342,15 @@ display: block;
   }
   p.regname{
     margin: 0px 3px 0px;
+    font-size: 10;
     padding: 0px 0px 0px 0px;
     display: inline;
     white-space: nowrap;
     color: inherit;
   }
-
+  @keyframes blinking{
+    0%{opacity: 1;
+    height: 25px;}
+    50%{opacity: 0.8;}
+    100%{opacity: 0.5;}
+}

@@ -86,7 +86,7 @@ class registrartable
         if ($detailed && $arr) {
             $arr =  $this->detail($arr);
         } 
-        if ($verbos){
+        if ($arr && $verbos){
             return $this->verbos($arr);
         }else{
             return $arr;
@@ -122,6 +122,9 @@ class registrartable
         WHERE `application`.`regID` ='.$registrar['id']; 
         $arr = $this->query($sql)->fetchall(PDO::FETCH_ASSOC);
     }
+    if(!$arr){
+        return false;
+    }
         for ($i = 1; $i < 4; $i ++) {
             $registrar['app'][$i] = $arr[0]['app'.$i];
         }
@@ -152,9 +155,12 @@ class registrartable
         $arr =$stmnt->fetchall(PDO::FETCH_ASSOC);
         foreach ($arr as &$value) {
             $value = $this->findbytele($value['tele'],true);
-            
+            if (!$value){
+                unset($value);
+            }else{
             $value['verbosresid'] = $this->sttable->findstate($value['resid']).','.$this->sttable->findcity($value['city']);
         }
+    }
         return $arr;
     }
 

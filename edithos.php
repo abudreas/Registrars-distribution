@@ -1,5 +1,14 @@
 <?php
+/** this editing hospital page. it has a known bug:
+ * if there is '0' hospitals in the data base it will crash
+ * but I didn't bother to fix it
+ */
 function castPost($POST,$i){
+    /** the $_POST for each form field comes in an array form
+     * array for names , array for cities ... etc
+     * so i had to cast these arrays into arrays represent hospitals
+     * each hospital has it's own array with its name capacity ,, etc
+     */
    if (isset($POST["id"][$i])) $hospital["id"]=$POST["id"][$i];
     $hospital["capacity"]=$POST["capacity"][$i]??0;
     $hospital["state"]=$POST["state"][$i]??0;

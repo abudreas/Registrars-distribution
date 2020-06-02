@@ -1,26 +1,27 @@
 # Summary
 
-Date : 2020-05-03 19:23:02
+Date : 2020-05-31 17:14:08
 
 Directory c:\xampp\htdocs\FormPHP2
 
-Total : 22 files,  1008 codes, 33 comments, 149 blanks, all 1190 lines
+Total : 38 files,  2785 codes, 134 comments, 352 blanks, all 3271 lines
 
 [details](details.md)
 
 ## Languages
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| PHP | 20 | 739 | 10 | 126 | 875 |
-| JavaScript | 1 | 167 | 10 | 11 | 188 |
-| CSS | 1 | 102 | 13 | 12 | 127 |
+| PHP | 31 | 1,646 | 72 | 215 | 1,933 |
+| JavaScript | 3 | 624 | 36 | 72 | 732 |
+| CSS | 2 | 418 | 26 | 52 | 496 |
+| HTML | 2 | 97 | 0 | 13 | 110 |
 
 ## Directories
 | path | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| . | 22 | 1,008 | 33 | 149 | 1,190 |
-| class | 4 | 225 | 5 | 52 | 282 |
-| include | 1 | 3 | 0 | 0 | 3 |
-| templates | 8 | 247 | 0 | 32 | 279 |
+| . | 38 | 2,785 | 134 | 352 | 3,271 |
+| class | 5 | 440 | 14 | 70 | 524 |
+| include | 2 | 215 | 42 | 17 | 274 |
+| templates | 14 | 503 | 1 | 49 | 553 |
 
 [details](details.md)

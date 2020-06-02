@@ -31,7 +31,7 @@
         <?php } ?>
     </tbody>
 </table>
-<?php if (isset($myregistrar['shift1'])&&!$small) { ?>
+<?php if (isset($myregistrar['prev'])&& !empty($myregistrar['prev'])&&!$small) { ?>
 <table>
     <thead>
         <tr>
@@ -39,10 +39,10 @@
         </tr>
     </thead>
     <tbody> <?php 
-       for ($x = 1;isset($myregistrar['shift'.$x]);$x++){ ?>
+       for ($x = 1;$x <= count($myregistrar['prev']);$x++){ ?>
       <tr>
         <td><?=$this->shiftlist[$x]?></td>
-            <td><?=htmlspecialchars($myregistrar['shift'.$x])?></td>
+            <td><?=htmlspecialchars($myregistrar['prev'][$x])?></td>
             
       <?php } ?>
        </tbody>
