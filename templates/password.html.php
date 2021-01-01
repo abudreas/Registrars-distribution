@@ -11,7 +11,7 @@
     <label for="password">كلمة السر</label>
     <input type="password" id="password" name="password"
    
-     required>
+     >
      <small>للحصول على كلمة السر عليك مراسلة المشرف</small>
   </li>
   <button type="submit">موافق</button>

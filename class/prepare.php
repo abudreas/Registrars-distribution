@@ -56,6 +56,7 @@ class prepare {
             //assigning other values
             $newreg['id'] = $registrar['id'];
             $newreg['name'] = $registrar['name'];
+            $newreg['tele'] = $registrar['tele'];
             $newreg['resid'] = $registrar['resid'];
             $newreg['city'] = $registrar['city'];
             $newreg['shift'] = $registrar['shift'];

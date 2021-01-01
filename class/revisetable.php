@@ -26,7 +26,7 @@ if (empty($myregistrar)){
 }
 $admin = false;
 if (session_status() == PHP_SESSION_ACTIVE && ! empty($_SESSION)&& isset($_SESSION['admin'])
-&& $_SESSION['admin'] > 2){
+&& $_SESSION['admin'] > 0){
     $admin = true;
 }
 

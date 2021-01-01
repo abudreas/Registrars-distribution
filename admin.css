@@ -16,7 +16,7 @@ form , div {
   text-align: right;
 }
 div.flexcontainer{
-  margin-top: auto;
+  margin-top: 0px;
   display: inline-flex;
   background-color: initial;
   border: initial;
@@ -51,8 +51,13 @@ div.remainscount{
   border: 1px solid black;
 
 }
-p.msgcontainer{
+.msgcontainer{
   background-color: azure;
+  
+}
+.msgcontainer > li{
+  margin-top: 7px;
+  cursor: pointer;
   
 }
 body {
@@ -184,11 +189,11 @@ footer {
   background-color: rgb(186, 207, 212);
   padding: 30px;
 }
-strong {
+.strong {
   color: white;
   background-color: darkred;
 }
-span.warning{
+li.warning{
   color: green;
   background-color: yellow;
 }
@@ -211,21 +216,8 @@ span.warning{
     border: 2px solid black;
   }
  
-  .placeholder{
-      opacity:0;       
-     transition: padding 1s;
-     display: inline;
-     padding: 0px 0px 0px 0px;
-     margin: 0px 0px 0px 0px;
-     border: 0px;
-     
-     
-  }
-  .collapse{
-      width: 100px;
-      background-color: red;
-     
-  }
+ 
+  
   .expand{
       
       padding: 0px 68px 0px 0px;
@@ -238,10 +230,15 @@ span.warning{
     align-self: auto;
     background-color: azure;
   }
+
   .drop.warning,.explain>.warning{
     border: 2px solid yellow;
     background-color: darkslategray;
     color: bisque;
+  }
+  .drop:focus{
+    box-shadow: 2px 3px 3px black;
+    border: 2px solid black;
   }
   .remains{
     margin-top: 2px;
@@ -269,13 +266,17 @@ span.warning{
     cursor: grab;
     
   }
+  .dragon:focus{
+    border: 5px solid gray !important;
+    box-shadow: 2px 4px 5px black;
+  }
   .dragon.shift0{
     background-color: rgb(83, 231, 83);
     color: black;
   }
   .dragon.shift1{
-    background-color: rgb(209, 231, 83);
-    color: rgb(56, 3, 3);
+    background-color: darkgreen;
+    color: rgb(235, 170, 170);
   }
   .dragon.shift2{
     background-color: rgb(83, 196, 231);
@@ -285,21 +286,23 @@ span.warning{
     background-color: rgb(20, 94, 204);
     color: black;
   }
+ 
   .dragon.shift4{
-    background-color: rgb(6, 19, 94);
-    color: rgb(187, 88, 8);
+    background-color: rgb(0, 0, 87);
+    color:red;
   }
   .dragon.shift5{
   
-    background-color: rgb(90, 2, 2);
-    color: lawngreen;
+    background-color: yellow;
+    color: purple;
   }
   .dragon.shift6{
-    background-color: rgb(145, 21, 107);
-    color: lawngreen;
+    background-color: rgb(255, 136, 0);
+    color: blue;
   }
   .dragon.shift7{
     background-color: rgb(226, 10, 21);
+    
   }
   .dragon.warning{
     
@@ -340,6 +343,54 @@ span.warning{
     width: 800px;
     overflow: scroll;
   }
+  .hoscontain.magnified{
+    /*
+    position: absolute;
+    top: 0px;
+    left: 0px;*/
+    width: 96%;
+    height: 90%;
+  }
+  button.magnify{
+    display: block;
+    background-color: rgba(19, 19, 19, 0.521);
+    opacity: 0.5;
+    margin: 0px 0px 0px 0px;
+    border: 0 0 0 0;
+   position: absolute;
+   top: 512px;
+   right: 20px;
+    
+  }
+  .visable{
+   display: none;
+  }/*
+  button.magnify.magnified{
+    top: 20px;
+    z-index: 1;
+  }*/
+  button.magnify:hover{
+    opacity: 1;
+    
+  }
+  .magnify .tooltiptext {
+    visibility: hidden;
+    width: 90px;
+    opacity: 0.8;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+   
+  
+    position: absolute;
+    z-index: 1;
+  }
+
+  .magnify:hover .tooltiptext {
+    visibility: visible;
+  }
   p.regname{
     margin: 0px 3px 0px;
     font-size: 10;
@@ -349,8 +400,19 @@ span.warning{
     color: inherit;
   }
   @keyframes blinking{
-    0%{opacity: 1;
-    height: 25px;}
+    0%{opacity: 1; box-shadow: 15px;}
     50%{opacity: 0.8;}
     100%{opacity: 0.5;}
+}
+.placeholder{
+  margin: 2px 2px 2px 2px;
+    width: 70px;
+    height: 20px;
+    padding: 2px 2px;
+    border-radius: 0px;
+    background-color: #555;
+    box-shadow: 0 0 5px 10px #555;
+    border: none;
+    opacity: 0.7;
+    border-radius: 1em;
 }

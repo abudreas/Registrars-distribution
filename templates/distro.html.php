@@ -47,13 +47,15 @@
 </div>
 </div>   
     </div>
+    <button class="magnify" id="mgn">[]<span class="tooltiptext">تكبير</span></button> 
         <div class="flexcontainer">
         <div class="hoscontain" id="hoscontain">
-            
-       <div class="drop" id="hos">
+           
+       <div class="drop" id="hos" tabindex="0">
         <label for="hos" id="hosname">makkah</label>
-        <small></small>
+        <small class="counter"></small>
        </div>
+       
     </div>
     <div id="infowindow" class="info">
         <h1>name</h1>
@@ -99,9 +101,9 @@
             <h2 id="messagesTitle">ملاحظات</h2>
         <div class="messages" >
             
-            <p id="msgbox" class="msgcontainer">
+            <ol id="msgbox" class="msgcontainer">
 
-            </p>
+            </ol>
         </div>
     </div>
 </div>
@@ -113,5 +115,6 @@
         </form>
         <script>
             <?="var result = ".$result.";"?>
+            <?="var date ='".$date."';"?>
         </script>
         <script src="dist.js"></script>

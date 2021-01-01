@@ -158,7 +158,7 @@ class registrartable
             if (!$value){
                 unset($value);
             }else{
-            $value['verbosresid'] = $this->sttable->findstate($value['resid']).','.$this->sttable->findcity($value['city']);
+            $value['verbosresid'] = $this->sttable->findstate($value['resid']).'.'.$this->sttable->findcity($value['city']);
         }
     }
         return $arr;
@@ -203,18 +203,29 @@ class registrartable
         $query .= ')';
         return $query;
     }
+    public function deletReg(int $id)
+    {
+       $sql = "DELETE `registrartable` , `previousshifts` , `application` FROM `registrartable` INNER JOIN `previousshifts` INNER JOIN `application` ON `registrartable`.`id` = `previousshifts`.`regID` and `previousshifts`.`regID` = `application`.`regID` WHERE `registrartable`.`id` = ".$id;
+       $row = $this->pdo->exec($sql);
+       if (!$row){
+        $sql = "DELETE `registrartable`  , `application` FROM `registrartable`  INNER JOIN `application` ON  `registrartable`.`id` = `application`.`regID` WHERE `registrartable`.`id` = ".$id;
+        $row = $this->pdo->exec($sql);
+       }
+    }
     public function hoschange($from , $to){
-        $sql = 'UPDATE `previousshifts` SET `hospital`=? WHERE `hospital`='.$from;
-        $arr[]=$to;
+        $sql = 'UPDATE `previousshifts` SET `hospital`=? WHERE `hospital`= ?';
+        $arr=[$to , $from];
         $this->query($sql,$arr);
         
     }
     public function citychange($from , $to){
-        $sql = 'UPDATE `registrartable` SET `city`=? WHERE `city`='.$from;
-        $this->query($sql,$arr[0]=$to);
+        $sql = 'UPDATE `registrartable` SET `city`=? WHERE `city`= ?';
+        $arr=[$to , $from];
+        $this->query($sql,$arr);
     }
     public function statechange($from , $to){
-        $sql = 'UPDATE `registrartable` SET `resid`=? WHERE `resid`='.$from;
-        $this->query($sql,$arr[0]=$to);
+        $sql = 'UPDATE `registrartable` SET `resid`=? WHERE `resid`= ?';
+        $arr=[$to , $from];
+        $this->query($sql,$arr);
     }
 }

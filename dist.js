@@ -1,14 +1,22 @@
+loadresult();
 /** result is an array defined in the HTML template */
+// eslint-disable-next-line no-undef
 var hosarray = result[0];
+// eslint-disable-next-line no-undef
 var remainarray = result[1];
 var hos = document.getElementById("hos");
 var hoscontain = document.getElementById("hoscontain");
 var remainBox = document.getElementById("remBox");
-/*var ph = document.getElementById("ph"); // this one was for some animation effects , but i droped the idea*/
 var regbutton = [];
+/////////
 var regbuttonProtoType = document.createElement("div");
 regbuttonProtoType.className = "dragon";
 regbuttonProtoType.id = "reg";
+regbuttonProtoType.setAttribute('tabindex', '0');
+///////////
+var placeHolder = document.createElement("div");
+placeHolder.className = "placeHolder";
+placeHolder.id = "ph";
 var msgbox = document.getElementById("msgbox");
 var hosptitals = [];
 regbuttonProtoType.draggable = true;
@@ -16,25 +24,58 @@ var dragged;
 initHospitals();
 initRemains();
 checkAll();
-document.addEventListener("drop", droped);
+//document.addEventListener("drop", droped);
+function loadresult() {
+  let d1 = new Date( date );
+  let d2 =  new Date (window.localStorage.getItem('date'));
+  if(window.localStorage.getItem('result')&& d1 < d2){
+    result = JSON.parse( window.localStorage.getItem('result'));
+  }
+  }
 function droped(event) {
-  event.preventDefault();
-
-  if (event.target.className == "drop" || event.target.className == "remains") {
+event.preventDefault();
+let hos;
+//let drag;
+let old = dragged.parentNode;
+  if (event.target.className == "drop"  ) {
     event.target.style.background = "";
-    dropingAction(dragged, event.target);
+   hos = event.target;
+    hos.appendChild(dragged);
   } else if (
     (event.target.classList.contains("dragon") ||
-      event.target.id == "hosname") &&
+      event.target.className == "counter" ||  event.target.className == "placeHolder") &&
     event.target != dragged
   ) {
     event.target.style.background = "";
-    dropingAction(dragged, event.target.parentNode);
+    hos = event.target.parentNode;
+    event.target.after(dragged);
   } else if (event.target.className == "regname") {
     event.target.style.background = "";
     let parent = event.target.parentNode;
-    dropingAction(dragged, parent.parentNode);
+    hos = parent.parentNode;
+    parent.after(dragged);
+  }else if(event.target.id =="hosname"){
+    hos = event.target.parentNode;
+    event.target.style.background = "";
+    let sibling = event.target.nextElementSibling;
+    sibling.after(dragged);
+  }else if(event.target.className == "remains"){
+    event.target.style.background = "";
+    hos = event.target;
+    hos.prepend(dragged);
+  }else{
+    placeHolder.remove();
+    return;
   }
+  placeHolder.remove();
+  if (hos){
+    updateHospital(hos);
+    checkregistrar(dragged, hos);
+  }
+  updateHospital(old);
+  checkHospital();
+  updateMsgBox();
+  fillinfo(dragged);
 }
 document.addEventListener(
   "dragstart",
@@ -49,19 +90,44 @@ document.addEventListener(
   },
   false
 );
-document.addEventListener(
-  "dragover",
-  function (event) {
-    event.preventDefault();
-  },
-  false
-);
+function dragover(event){
+  event.preventDefault();
+  if (event.target.className == "drop") {
+    event.target.style.background = "";
+  
+    event.target.appendChild(placeHolder);
+  } else if (
+    (event.target.classList.contains("dragon") ||
+      event.target.className == "counter" ||  event.target.className == "placeHolder") &&
+    event.target != dragged
+  ) {
+    event.target.style.background = "";
+   
+    event.target.after(placeHolder);
+  } else if (event.target.className == "regname") {
+    event.target.style.background = "";
+    let parent = event.target.parentNode;
+    
+    parent.after(placeHolder);
+  }else if(event.target.id =="hosname"){
+    event.target.style.background = "";
+    let sibling = event.target.nextElementSibling;
+    
+    sibling.after(placeHolder);
+  }else if(event.target.className == "remains"){
+    event.target.style.background = "";
+    event.target.prepend(placeHolder);
+  }else{
+    return;
+  }
+}
+
 document.addEventListener(
   "dragend",
   function (event) {
     event.target.style.opacity = "";
-
-    /* window.setTimeout(function(){ph.classList.toggle("expand");},20); // animation stuff *AS*/
+    placeHolder.remove();
+    
   },
   false
 );
@@ -83,6 +149,8 @@ document.getElementById("publish").addEventListener("submit", function (event) {
   }
 });
 function initHospitals() {
+  remainBox.addEventListener("drop", droped);
+  remainBox.addEventListener("dragover",dragover);
   let i = 0;
   for (const item of hosarray) {
     hosptitals.push(hos.cloneNode(true));
@@ -92,7 +160,8 @@ function initHospitals() {
     hosptitals[i]["warning"] = [];
     hoscontain.appendChild(hosptitals[i]);
     // hosptitals.push(hos.cloneNode(true));
-
+    hosptitals[i].addEventListener("drop", droped);
+    hosptitals[i].addEventListener("dragover",dragover);
     for (const reg of item["registrar"]) {
       regbutton.push(regbuttonProtoType.cloneNode(true));
       let x = regbutton.length - 1;
@@ -237,60 +306,57 @@ function checkApp(registrar, hospital) {
    }
    msgbox.innerHTML = msg;
  }*/
-async function updateMsgBox() {
-  /**
-   * I don't why i did it as async func
-   * but here it's :
-   */
-  let x = 1;
-  let allmsg = new Promise(function (resolve, reject) {
-    let msg = "";
-
+ function msgBoxClick(event){
+ // setTimeout(hoscontain.scrollIntoView({behavior: "smooth", block: "end"}),0);
+ event.target.btnLink.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
+  setTimeout(function (){event.target.btnLink.focus();},700);
+ }
+ function clearMsgBox(){
+   while (msgbox.firstChild) {
+     msgbox.firstChild.remove();
+   }
+ }
+function updateMsgBox() {
+  clearMsgBox();
+  let x = 0;
+  let msg ;
+  let msgArr=[];
+  function addToList(className,txt,link){
+    msg = document.createElement("li");
+    msg.className = className;
+    msg.innerText = txt;
+    msg['btnLink']=link;
+    msg.addEventListener("click",msgBoxClick);
+    msgArr.push(msg);
+  }
+  
     for (const reg of regbutton) {
       for (const danger of reg.danger) {
-        msg += "<strong>" + x + ") " + danger + "</strong>" + "<br><br>";
+       addToList("strong",danger,reg);
         x++;
       }
       for (const warn of reg.warning) {
-        msg +=
-          x + ") " + "<span class='warning'>" + warn + "</span>" + "<br><br>";
-
+        addToList("warning",warn,reg);
         x++;
       }
     }
     for (const hos of hosptitals) {
       for (const warn of hos.warning) {
-        msg += x + ") " + warn + "<br><br>";
+        addToList(undefined,warn,hos);
         x++;
       }
     }
 
-    resolve(msg);
-  });
+ 
   document.querySelector("#messagesTitle").textContent = "ملاحظات (" + x + ")";
-  msgbox.innerHTML = await allmsg;
+  
+
+  for (const MSG of msgArr) {
+    msgbox.appendChild(MSG);
+  }
   return x;
 }
-function dropingAction(btn, container) {
-  let old = btn.parentNode;
-  //btn.after(ph) //*AS;
-  old.removeChild(dragged);
-  if (container.id == "remBox") {
-    container.prepend(dragged);
-  } else {
-    container.appendChild(dragged);
-  }
 
-  /*ph.classList.toggle("expand",true);//*AS*/
-  updateHospital(container);
-  updateHospital(old);
-
-  checkregistrar(dragged, container);
-
-  checkHospital();
-  updateMsgBox();
-  fillinfo(btn);
-}
 function updateHospital(hoscontainer) {
   if (hoscontainer.id == "hos") {
     hoscontainer.querySelector("small").textContent =
@@ -351,7 +417,8 @@ function saveit(hidden = false) {
       if (xml.readyState === XMLHttpRequest.DONE) {
         var status = xml.status;
         document.getElementById("saveitbtn").disabled = false;
-
+        localStorage.setItem('result',JSON.stringify(result));
+        localStorage.setItem('date',new Date().toUTCString())
         if (status === 0 || (status >= 200 && status < 400)) {
           alert("تم الحفظ");
         } else {
@@ -369,3 +436,10 @@ function checkAll() {
   checkHospital();
   updateMsgBox();
 }
+let magnify = document.getElementById('mgn');
+magnify.addEventListener("click",function(){
+  hoscontain.classList.toggle('magnified');
+  hoscontain.scrollIntoView();
+  /* document.getElementById('infowindow').classList.toggle("visable");
+  magnify.classList.toggle('magnified'); */
+});

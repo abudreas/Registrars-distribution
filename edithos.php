@@ -20,7 +20,7 @@ function castPost($POST,$i){
 return $hospital;
 }
 $output ="عليك تسجيل الدخول كأدمن";
-if(!empty($_SESSION) && isset($_SESSION['admin']) && $_SESSION['admin'] > 1){
+if(!empty($_SESSION) && isset($_SESSION['admin']) && $_SESSION['admin'] > 2){
 try {
     include __DIR__.'/include/databaseconnection.php';
  include __DIR__.'/class/registrartable.php';
@@ -58,7 +58,7 @@ foreach ($editedhospitals as $hospital) {
 }
 foreach ($deletedhospitals as $hospital) {
     $regtable->hoschange($hospital['id'],$hospital['delet']);
-    $hostable->delete($hospital);
+   // $hostable->delete($hospital);
 }
 foreach ($newhospitals as $hospital) {
     $hostable->add($hospital);

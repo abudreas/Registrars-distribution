@@ -177,12 +177,12 @@ function clalculate($regarray,$hosarray) {
                          //////////////
                          // if a registrar had `the` previous shift in the same hospital remoov entirly :
                             $m =count($applicans);
-                            for ($i = 0; $i < $m; $i++) {
-                              if ($applicans[$i]['prev'][count($applicans[$i]['prev'])-1]['id']== $hospital['id']) {
-                                  $reg = take($i,$applicans);
-                                  $remains[$reg['currentapplicans']][]=$reg;
-                              }
-                          }
+                            for ($i = $m-1; $i > -1; $i--) {
+                                if (count($applicans[$i]['prev']) > 0 && $applicans[$i]['prev'][count($applicans[$i]['prev'])-1]['id']== $hospital['id']) {
+                                    $reg = take($i,$applicans);
+                                    $remains[$reg['currentapplicans']][]=$reg;
+                                }
+                            }
                           /*if the registrar has `a` previous shift in the same hospital 
                            * moov to end of the list
                            */
